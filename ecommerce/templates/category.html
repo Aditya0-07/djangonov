@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class = "container-fluid mt-1" style = "margin-bottom:100px">
+    <img src = "{% static 'images/download.jpg' %}" height = "450px" width = "100%">
+</div>
+
+<div class = "container-fluid mt-1" style = "margin-bottom:100px">
+    <h3 class = "text-center fw-bold"> Our Collections </h3>
+    <p style = "text-align:justify; line-height:2"> Online Market-Place </p>
+</div>
+
+<div class = "container-fluid mt-1" style = "margin-bottom:200px">
+        <div class = "row">
+            {% for i in c %}
+                <div class = "col-sm-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{i.image.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{i.name}}</h5>
+                                <a href="{% url 'shop:products' i.id %}" class="btn btn-primary">Products</a>
+                            </div>
+                        </div>
+                </div>
+              {% endfor %}
+            </div>
+</div>
+
+{% endblock %}
